@@ -93,8 +93,19 @@ class enrol_demands_plugin extends enrol_plugin {
                 $askedenrolment->enroldid = $instance->id;
                 $askedenrolment->studentid = $USER->id;
                 $askedenrolment->askedat = time();
+                $askedenrolment->answer = null;
 
                 $DB->insert_record('enrol_demands', $askedenrolment);
+
+                $coursecontext = context_course::instance($instance->courseid);
+
+                $listteachers = get_users_by_capability($coursecontext,
+                        'enrol/demands:managecourseenrolment');
+
+                foreach ($listteachers as $teacher) {
+
+                    send_demand_notification($instance, $teacher);
+                }
 
                 redirect("$CFG->wwwroot/enrol/index.php?id=$instance->id");
             }
@@ -215,4 +226,90 @@ class enrol_demands_plugin extends enrol_plugin {
         $context = context_course::instance($instance->courseid);
         return has_capability('enrol/demands:config', $context);
     }
+
+    public function send_answer_notification($user, $instance, $type, $custommessage) {
+
+        global $CFG, $USER;
+
+        require_once($CFG->dirroot.'/enrol/demands/notification.php');
+        // Required for course_get_url() function.
+        require_once($CFG->dirroot.'/course/lib.php');
+
+        $course = get_course($instance->courseid);
+
+        $contact = core_user::get_support_user();
+
+        $stringdata = new stdClass();
+        $stringdata->coursename = $course->fullname;
+        $stringdata->userfirstname = $USER->firstname;
+        $stringdata->userlastname = $USER->lastname;
+        $stringdata->useremail = $USER->email;
+
+        if ($type == 'enroled') {
+
+            $subject = get_string('subjectaccepted', 'enrol_demands', $course->fullname);
+
+            if (isset($custommessage)) {
+
+                $content = $custommessage;
+            } else {
+
+                $content = get_string('succesfulenrolmentmail', 'enrol_demands', $stringdata);
+            }
+        } else if ($type == 'rejected') {
+
+            $subject = get_string('subjectrejected', 'enrol_demands', $course->fullname);
+            if (isset($custommessage)) {
+
+                $content = $custommessage;
+            } else {
+
+                $content = get_string('rejectedenrolmentmail', 'enrol_demands', $stringdata);
+            }
+        }
+
+        $courseurl = new moodle_url('course/view.php', array('id' => $course->id));
+
+        $message = new enrol_demands_notification($user, $contact, $type, $subject,
+                $content, $courseurl, $course);
+
+        message_send($message);
+    }
+
+    public function send_demand_notification($instance, $user) {
+
+        global $CFG;
+
+        require_once($CFG->dirroot.'/enrol/demands/notification.php');
+        // Required for course_get_url() function.
+        require_once($CFG->dirroot.'/course/lib.php');
+
+        $course = get_course($instance->courseid);
+
+        $contact = core_user::get_support_user();
+
+
+        $subject = get_string('subjectnewdemand', 'enrol_demands', $course->fullname);
+
+
+        $content = get_string('newdemandmail', 'enrol_demands', $course->fullname);
+
+        $courseurl = new moodle_url('course/view.php', array('id' => $course->id));
+
+        $message = new enrol_demands_notification($user, $contact, 'demands', $subject,
+                $content, $courseurl, $course);
+
+        message_send($message);
+    }
+}
+
+function enrol_demands_extend_navigation_course($navigation, $course, $context) {
+
+    $requestsurl = new moodle_url('/enrol/demands/requests.php');
+    $requeststext = get_string('pluginname', 'enrol_demands');
+
+    $settingsnode = navigation_node::create($requeststext, $requestsurl,
+            navigation_node::TYPE_SETTING, null, null, new pix_icon('i/settings', ''));
+
+    $navigation->add_node($settingsnode);
 }

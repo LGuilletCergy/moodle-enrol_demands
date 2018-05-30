@@ -36,3 +36,57 @@ $string['hasroleincourse'] = "You are already enroled in this course";
 $string['hasapplied'] = "You have already applied to this course";
 $string['demandenrolment'] = "Ask to be enroled in this course";
 $string['status'] = 'Allow demands for enrolment';
+$string['demandsmail'] = "You have {$a} enrolment demands not answered.
+    <p>To answer them, please log into CoursUCP
+    (<a href='https://cours.u-cergy.fr'>https://cours.u-cergy.fr</a>)
+    and consult the bloc \"Enrolment on demands\" on your dashboard. </p>
+    <p>You can also go directly to the page
+    <a href='https://cours.u-cergy.fr/enrol/demands/requests.php'>
+    https://cours.u-cergy.fr/enrol/demands/requests.php</a>.</p>
+    <p>On that page you can also ask to no longer receive these emails.</p>
+    <p><br>
+    CoursUCP, Your pedagogic platform.</p>";
+$string['succesfulenrolmentmail'] = "You have been successfully enroled in course {$a}.";
+$string['rejectedenrolmentmail'] = "Your application to course {$a} has been rejected.";
+$string['subjectaccepted'] = "Your enrolment has been approved";
+$string['subjectrejected'] = "Your enrolment has been rejected";
+$string['subjectreminder'] = "You have enrolment demands pending";
+$string['sendreminder'] = "Send weekly reminder of demands of enrolments";
+$string['headermanageenrolments'] = "<br><br>
+    <h2>Demands you received</h2>
+    Students (or coworkers) have requested that you enrol them in your course :<br><br>
+    <a href='requests.php?all=1'><button>Accept everyone</button></a>&nbsp;&nbsp;
+    <a href='requests.php?all=2'><button>Accept only correct vet</button></a><br><br>
+    <a href='requests.php?all=3'><button>Reject everyone</button></a>&nbsp;&nbsp;
+    <a href='requests.php?all=4'><button>Reject only if bad vet</button></a><br><br>
+    <br>";
+$string['buttonstopreminders'] = "<a href='requests.php?nomail=1'>"
+        . "<button>Do not send mails for these demands.</button></a>";
+$string['buttonsendremindersagain'] = "<a href='requests.php?nomail=2'>"
+        . "<button>Send these demands by mail every monday morning.</button></a>";
+$string['coursevet'] = "VET of the course";
+$string['coursename'] = "Name of the course";
+$string['askedon'] = "Date of the demand";
+$string['askedby'] = "Name of the asker";
+$string['mailasker'] = "Mail of the asker";
+$string['vetasker'] = "VETs of the asker";
+$string['answer'] = "Answer";
+$string['accept'] = "Accept";
+$string['reject'] = "Reject";
+$string['headertableyourdemands'] = "<h2>Demands you have made</h2>
+    <a href=/course/index.php><button type=button>Add a demand</button></a>
+    <br><br>";
+$string['waitingrequest'] = "Pending requests";
+$string['acceptedrequest'] = "Accepted requests";
+$string['rejectedrequest'] = "Rejected requests";
+$string['subjectnewdemand'] = "New enrolment demand in the course {$a}";
+$string['newdemandmail'] = "You have received a new enrolment demand in the course {$a}
+    <p>To answer it, please log into CoursUCP
+    (<a href='https://cours.u-cergy.fr'>https://cours.u-cergy.fr</a>)
+    and consult the bloc \"Enrolment on demands\" on your dashboard. </p>
+    <p>You can also go directly to the page
+    <a href='https://cours.u-cergy.fr/enrol/demands/requests.php'>
+    https://cours.u-cergy.fr/enrol/demands/requests.php</a>.</p>
+    <p>On that page you can also ask to no longer receive these emails.</p>
+    <p><br>
+    CoursUCP, Your pedagogic platform.</p>";

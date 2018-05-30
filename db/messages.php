@@ -27,42 +27,20 @@
  * @copyright 2018 Laurent Guillet <laurent.guillet@u-cergy.fr>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * File : access.php
- * Access file
+ * File : messages.php
+ * Define the notifications of the plugin.
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
+$messageproviders = array (
 
-    'enrol/demands:config' => array(
+    // Notify teacher of his pending enrolment demands.
+    'demands' => array (),
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_COURSE,
-        'archetypes' => array(
-            'editingteacher' => CAP_ALLOW,
-            'manager' => CAP_ALLOW,
-        )
-    ),
+    // Notify student that he was enroled.
+    'enroled' => array (),
 
-    /* This is used only when sync suspends users instead of full unenrolment. */
-    'enrol/demands:unenrol' => array(
-
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_COURSE,
-        'archetypes' => array(
-            'manager' => CAP_ALLOW,
-        )
-    ),
-
-    'enrol/demands:managecourseenrolment' => array(
-
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_COURSE,
-        'archetypes' => array(
-            'editingteacher' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
-        )
-    ),
-
+    // Notify student that his demand was rejected.
+    'rejected' => array (),
 );

@@ -27,42 +27,20 @@
  * @copyright 2018 Laurent Guillet <laurent.guillet@u-cergy.fr>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * File : access.php
- * Access file
+ * File : tasks.php
+ * Scheduled tasks file
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
-
-    'enrol/demands:config' => array(
-
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_COURSE,
-        'archetypes' => array(
-            'editingteacher' => CAP_ALLOW,
-            'manager' => CAP_ALLOW,
-        )
+$tasks = array(
+    array(
+        'classname' => 'enrol_demands\task\sendreminder',
+        'blocking' => 0,
+        'minute' => '0',
+        'hour' => '6',
+        'day' => '*',
+        'dayofweek' => '1',
+        'month' => '*'
     ),
-
-    /* This is used only when sync suspends users instead of full unenrolment. */
-    'enrol/demands:unenrol' => array(
-
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_COURSE,
-        'archetypes' => array(
-            'manager' => CAP_ALLOW,
-        )
-    ),
-
-    'enrol/demands:managecourseenrolment' => array(
-
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_COURSE,
-        'archetypes' => array(
-            'editingteacher' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
-        )
-    ),
-
 );
