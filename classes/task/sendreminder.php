@@ -67,12 +67,15 @@ class sendreminder extends \core\task\scheduled_task {
 
                 foreach ($courseteachers as $courseteacher) {
 
-                    if (isset($teachers[$courseteacher->userid])) {
+                    if (is_enrolled($coursecontext, $courseteacher)) {
 
-                        $teachers[$courseteacher->userid]++;
-                    } else {
+                        if (isset($teachers[$courseteacher->userid])) {
 
-                        $teachers[$courseteacher->userid] = 1;
+                            $teachers[$courseteacher->userid]++;
+                        } else {
+
+                            $teachers[$courseteacher->userid] = 1;
+                        }
                     }
                 }
             }

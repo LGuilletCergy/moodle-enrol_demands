@@ -104,7 +104,10 @@ class enrol_demands_plugin extends enrol_plugin {
 
                 foreach ($listteachers as $teacher) {
 
-                    send_demand_notification($instance, $teacher);
+                    if (is_enrolled($coursecontext, $teacher)) {
+
+                        send_demand_notification($instance, $teacher);
+                    }
                 }
 
                 redirect("$CFG->wwwroot/enrol/index.php?id=$instance->id");

@@ -108,7 +108,8 @@ function rejectenroldemand($paramreject, $custommessage) {
 
         $coursecontext = context_course::instance($enrol->courseid);
 
-        if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)) {
+        if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)
+                && is_enrolled($coursecontext)) {
 
             $student = $DB->get_record('user', array('id' => $demanddata->studentid));
 
@@ -141,7 +142,8 @@ function acceptenroldemand($paramenrol, $custommessage) {
 
         $coursecontext = context_course::instance($enrol->courseid);
 
-        if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)) {
+        if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)
+                && is_enrolled($coursecontext)) {
 
             $student = $DB->get_record('user', array('id' => $demanddata->studentid));
 
@@ -291,7 +293,8 @@ function maketabledemands() {
 
             $coursecontext = context_course::instance($enrol->courseid);
 
-            if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)) {
+            if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)
+                    && is_enrolled($coursecontext)) {
 
                 $course = $DB->get_record('course', array('id' => $enrol->courseid));
                 $student = $DB->get_record('user', array('id' => $demand->studentid));
