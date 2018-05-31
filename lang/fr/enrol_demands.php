@@ -78,15 +78,15 @@ $string['sendreminder'] = "Envoi des rappels de demande d'inscription hebdomadai
 $string['headermanageenrolments'] = "<br><br>
     <h2>Demandes que vous avez reçues</h2>
     Des étudiants (ou des collègues) vous ont demandé de les inscrire à vos cours :<br><br>
-    <a href='requests.php?all=1'><button class=btn btn-secondary>Accepter tous</button></a>&nbsp;&nbsp;
-    <a href='requests.php?all=2'><button class=btn btn-secondary>Accepter tous si bonne VET</button></a><br><br>
-    <a href='requests.php?all=3'><button class=btn btn-secondary>Refuser tous</button></a>&nbsp;&nbsp;
-    <a href='requests.php?all=4'><button class=btn btn-secondary>Refuser tous si mauvaise VET</button></a><br><br>
+    <a href='requests.php?all=1'><button class='btn btn-secondary'>Accepter tous</button></a>&nbsp;&nbsp;
+    <a href='requests.php?all=2'><button class='btn btn-secondary'>Accepter tous si bonne VET</button></a><br><br>
+    <a href='requests.php?all=3'><button class='btn btn-secondary'>Refuser tous</button></a>&nbsp;&nbsp;
+    <a href='requests.php?all=4'><button class='btn btn-secondary'>Refuser tous si mauvaise VET</button></a><br><br>
     <br>";
 $string['buttonstopreminders'] = "<a href='requests.php?nomail=1'>"
-        . "<button class=btn btn-secondary>Ne plus m'envoyer de courriel pour ces demandes.</button></a>";
+        . "<button class='btn btn-secondary'>Ne plus m'envoyer de courriel pour ces demandes.</button></a>";
 $string['buttonsendremindersagain'] = "<a href='requests.php?nomail=2'>"
-        . "<button class=btn btn-secondary>Merci de me signaler ces demandes par courriel chaque lundi matin.</button></a>";
+        . "<button class='btn btn-secondary'>Merci de me signaler ces demandes par courriel chaque lundi matin.</button></a>";
 $string['coursevet'] = "VET du cours";
 $string['coursename'] = "Nom du cours";
 $string['askedon'] = "Date de la demande";
@@ -97,7 +97,7 @@ $string['answer'] = "Réponse";
 $string['accept'] = "Accepter";
 $string['reject'] = "Refuser";
 $string['headertableyourdemands'] = "<h2>Demandes que vous avez déposées</h2>
-    <a href=/course/index.php><button class=btn btn-secondary type=button>Ajouter une demande</button></a>
+    <a href=/course/index.php><button class='btn btn-secondary' type=button>Ajouter une demande</button></a>
     <br><br>";
 $string['waitingrequest'] = "Demandes en attente";
 $string['acceptedrequest'] = "Demandes acceptées";

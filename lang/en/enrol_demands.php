@@ -55,15 +55,15 @@ $string['sendreminder'] = "Send weekly reminder of demands of enrolments";
 $string['headermanageenrolments'] = "<br><br>
     <h2>Demands you received</h2>
     Students (or coworkers) have requested that you enrol them in your course :<br><br>
-    <a href='requests.php?all=1'><button class=btn btn-secondary>Accept everyone</button></a>&nbsp;&nbsp;
-    <a href='requests.php?all=2'><button class=btn btn-secondary>Accept only correct vet</button></a><br><br>
-    <a href='requests.php?all=3'><button class=btn btn-secondary>Reject everyone</button></a>&nbsp;&nbsp;
-    <a href='requests.php?all=4'><button class=btn btn-secondary>Reject only if bad vet</button></a><br><br>
+    <a href='requests.php?all=1'><button class='btn btn-secondary'>Accept everyone</button></a>&nbsp;&nbsp;
+    <a href='requests.php?all=2'><button class='btn btn-secondary'>Accept only correct vet</button></a><br><br>
+    <a href='requests.php?all=3'><button class='btn btn-secondary'>Reject everyone</button></a>&nbsp;&nbsp;
+    <a href='requests.php?all=4'><button class='btn btn-secondary'>Reject only if bad vet</button></a><br><br>
     <br>";
 $string['buttonstopreminders'] = "<a href='requests.php?nomail=1'>"
-        . "<button class=btn btn-secondary>Do not send mails for these demands.</button></a>";
+        . "<button class='btn btn-secondary'>Do not send mails for these demands.</button></a>";
 $string['buttonsendremindersagain'] = "<a href='requests.php?nomail=2'>"
-        . "<button class=btn btn-secondary>Send these demands by mail every monday morning.</button></a>";
+        . "<button class='btn btn-secondary'>Send these demands by mail every monday morning.</button></a>";
 $string['coursevet'] = "VET of the course";
 $string['coursename'] = "Name of the course";
 $string['askedon'] = "Date of the demand";
@@ -74,7 +74,7 @@ $string['answer'] = "Answer";
 $string['accept'] = "Accept";
 $string['reject'] = "Reject";
 $string['headertableyourdemands'] = "<h2>Demands you have made</h2>
-    <a href=/course/index.php><button class=btn btn-secondary type=button>Add a demand</button></a>
+    <a href=/course/index.php><button class='btn btn-secondary' type=button>Add a demand</button></a>
     <br><br>";
 $string['waitingrequest'] = "Pending requests";
 $string['acceptedrequest'] = "Accepted requests";
