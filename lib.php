@@ -90,7 +90,7 @@ class enrol_demands_plugin extends enrol_plugin {
             if ($data = $form->get_data()) {
 
                 $askedenrolment = new stdClass();
-                $askedenrolment->enroldid = $instance->id;
+                $askedenrolment->enrolid = $instance->id;
                 $askedenrolment->studentid = $USER->id;
                 $askedenrolment->askedat = time();
                 $askedenrolment->answer = null;
@@ -110,7 +110,7 @@ class enrol_demands_plugin extends enrol_plugin {
                     }
                 }
 
-                redirect("$CFG->wwwroot/enrol/index.php?id=$instance->id");
+                redirect("$CFG->wwwroot/enrol/index.php?id=$instance->courseid");
             }
 
             $output = $form->render();
