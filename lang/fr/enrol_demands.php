@@ -78,10 +78,10 @@ $string['sendreminder'] = "Envoi des rappels de demande d'inscription hebdomadai
 $string['headermanageenrolments'] = "<br><br>
     <h2>Demandes que vous avez reçues</h2>
     Des étudiants (ou des collègues) vous ont demandé de les inscrire à vos cours :<br><br>
-    <a href='requests.php?all=1'><button class='btn btn-secondary'>Accepter tous</button></a>&nbsp;&nbsp;
-    <a href='requests.php?all=2'><button class='btn btn-secondary'>Accepter tous si bonne VET</button></a><br><br>
-    <a href='requests.php?all=3'><button class='btn btn-secondary'>Refuser tous</button></a>&nbsp;&nbsp;
-    <a href='requests.php?all=4'><button class='btn btn-secondary'>Refuser tous si mauvaise VET</button></a><br><br>
+    <a href='validate.php?all=1'><button class='btn btn-secondary'>Accepter tous</button></a>&nbsp;&nbsp;
+    <a href='validate.php?all=2'><button class='btn btn-secondary'>Accepter tous si bonne VET</button></a><br><br>
+    <a href='validate.php?all=3'><button class='btn btn-secondary'>Refuser tous</button></a>&nbsp;&nbsp;
+    <a href='validate.php?all=4'><button class='btn btn-secondary'>Refuser tous si mauvaise VET</button></a><br><br>
     <br>";
 $string['buttonstopreminders'] = "<a href='requests.php?nomail=1'>"
         . "<button class='btn btn-secondary'>Ne plus m'envoyer de courriel pour ces demandes.</button></a>";
@@ -114,3 +114,4 @@ $string['newdemandmail'] = "Vous avez une nouvelle demande d'inscription en atte
     comme celui-ci.</p>
     <p>Bien cordialement,<br>
     CoursUCP, votre plateforme pédagogique.</p>";
+$string['custommessage'] = "Message personnalisé";

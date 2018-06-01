@@ -27,19 +27,29 @@
  * @copyright 2018 Laurent Guillet <laurent.guillet@u-cergy.fr>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * File : custommessage_form.php
+ * File : validate_form.php
  * Form file
  */
 
 require_once("$CFG->libdir/formslib.php");
 
-class enrol_demands_custommessage_form extends moodleform {
+class enrol_demands_validate_form extends moodleform {
 
     protected $instance;
 
     //Add elements to form
     public function definition() {
         global $CFG;
+
+        $mform = $this->_form;
+        $paramdata = $this->_customdata;
+
+        $mform->addElement('text', 'custommessage', get_string('custommessage', 'enrol_demands'));
+        $mform->addElement('hidden', 'reject', $paramdata->reject);
+        $mform->addElement('hidden', 'enrol', $paramdata->enrol);
+        $mform->addElement('hidden', 'all', $paramdata->all);
+
+        $this->add_action_buttons();
 
     }
     //Custom validation should be added here

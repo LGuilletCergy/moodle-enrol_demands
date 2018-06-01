@@ -32,62 +32,6 @@ if ($paramnomail == 1 || $paramnomail == 2) {
     change_notification_status($paramnomail);
 }
 
-//REJET D'UNE DEMANDE
-if ($paramreject) {
-    rejectenroldemand($paramreject);
-}
-
-//ACCEPTATION D'UNE DEMANDE
-if ($paramenrol) {
-    acceptenroldemand($paramenrol);
-}
-
-if ($paramall) {
-
-    // Le tri sur le droit d'acceptation ou de refus se fait dans la fonction.
-
-    $askedenrolments = $DB->get_records('enrol_demands');
-
-    foreach ($askedenrolments as $askedenrolment) {
-
-        switch ($paramall) {
-
-            case 1: // Accepter tous.
-
-                acceptenroldemand($askedenrolment->id);
-                break;
-
-            case 2: //Accepter tous si bonne VET
-
-                $correctvet = has_correct_vet($askedenrolment);
-
-                if ($correctvet) {
-                    acceptenroldemand($askedenrolment->id);
-                }
-
-                break;
-
-            case 3: // Refuser tous.
-
-                rejectenroldemand($askedenrolment->id);
-                break;
-
-            case 4: // Refuser tous si mauvaise VET.
-
-                $correctvet = has_correct_vet($askedenrolment);
-
-                if (!$correctvet) {
-                    rejectenroldemand($askedenrolment->id);
-                }
-
-                break;
-
-            default:
-                break;
-        }
-    }
-}
-
 echo $OUTPUT->header();
 
 maketabledemands();
@@ -95,77 +39,6 @@ echo "<br><br>";
 maketableyourdemands();
 
 echo $OUTPUT->footer();
-
-function rejectenroldemand($paramreject, $custommessage) {
-
-    global $DB, $USER;
-
-    $demanddata = $DB->get_record('enrol_demands', array('id' => $paramreject));
-
-    if ($demanddata->answererid == 0) {
-
-        $enrol = $DB->get_record('enrol', array('id' => $demanddata->enrolid));
-
-        $coursecontext = context_course::instance($enrol->courseid);
-
-        if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)
-                && is_enrolled($coursecontext)) {
-
-            $student = $DB->get_record('user', array('id' => $demanddata->studentid));
-
-            $now = time();
-            $sql = "UPDATE mdl_enrol_demands SET answeredat = $now,"
-                    . " answer = 'Non', answererid = $USER->id WHERE id = $paramreject";
-            $DB->execute($sql);
-
-            // Send mail.
-
-            send_answer_notification($student, $enrol, 'rejected', $custommessage);
-
-            return 0;
-        } else {
-
-            return -1;
-        }
-    }
-}
-
-function acceptenroldemand($paramenrol, $custommessage) {
-
-    global $DB, $USER;
-
-    $demanddata = $DB->get_record('enrol_demands', array('id' => $paramenrol));
-
-    if ($demanddata->answererid == 0) {
-
-        $enrol = $DB->get_record('enrol', array('id' => $demanddata->enrolid));
-
-        $coursecontext = context_course::instance($enrol->courseid);
-
-        if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)
-                && is_enrolled($coursecontext)) {
-
-            $student = $DB->get_record('user', array('id' => $demanddata->studentid));
-
-            enrol_demands_plugin::enrol_user($enrol, $student->id, $enrol->roleid);
-
-            // On note que la demande est acceptée.
-            $now = time();
-            $sql = "UPDATE mdl_enrol_demands SET answeredat = $now, answer = 'Oui',"
-                    . " answererid = $USER->id WHERE id = $paramenrol";
-            $DB->execute($sql);
-
-            // Send mail.
-
-            send_answer_notification($student, $enrol, 'enroled', $custommessage);
-
-            return 0;
-        } else {
-
-            return -1;
-        }
-    }
-}
 
 function change_notification_status($paramnomail) {
 
@@ -222,40 +95,7 @@ function change_notification_status($paramnomail) {
     }
 }
 
-function has_correct_vet($askedenrolment) {
 
-    global $DB;
-
-    $correctvet = false;
-
-    // Tester si la table des vets existe.
-
-    $dbman = $DB->get_manager();
-
-    if ($dbman->table_exists('local_usercreation_vet')) {
-
-        $correctvet = false;
-
-        $enrol = $DB->get_record('enrol', array('id' => $askedenrolment->enrolid));
-        $course = $DB->get_record('course', array('id' => $enrol->courseid));
-        $categoryvet = $DB->get_record('course_categories',
-                array('id' => $course->categoryid))->idnumber;
-
-        $studentvets = $DB->get_records('local_usercreation_vet',
-                array('studentid' => $askedenrolment->studentid));
-
-        foreach ($studentvets as $studentvet) {
-
-            if ($studentvet->vetcode == $categoryvet) {
-
-                $correctvet = true;
-                break;
-            }
-        }
-    }
-
-    return $correctvet;
-}
 
 function maketabledemands() {
 
@@ -316,9 +156,9 @@ function maketabledemands() {
                     }
                 }
 
-                $linebutton = "<td><a href='requests.php?enrol=$demand->id'>".
+                $linebutton = "<td><a href='validate.php?enrol=$demand->id'>".
                         get_string('accept', 'enrol_demands')."</a></td>"
-                        . "<td><a href='requests.php?reject=$demand->id'>".
+                        . "<td><a href='validate.php?reject=$demand->id'>".
                         get_string('reject', 'enrol_demands')."</a></td>";
 
                 $line = array();
