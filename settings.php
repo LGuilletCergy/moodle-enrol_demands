@@ -40,7 +40,7 @@ if ($ADMIN->fulltree) {
 
 
     $options = get_default_enrol_roles(context_system::instance());
-    $student = $DB->get_record('role', array('shortname' => student));
+    $student = $DB->get_record('role', array('shortname' => 'student'));
     $settings->add(new admin_setting_configselect('enrol_demands/roleid',
             get_string('defaultrole', 'role'), '', $student->id, $options));
 }
