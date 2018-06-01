@@ -6,6 +6,7 @@ require_once($CFG->libdir.'/adminlib.php');
 
 $PAGE->set_url('/enrol/demands/requests.php');
 $PAGE->set_pagelayout('report');
+$PAGE->set_context(context_system::instance());
 
 require_login();
 
@@ -175,7 +176,14 @@ function maketabledemands() {
         }
     }
 
-    $table->data  = $data;
+    if (isset($data)) {
+
+        $table->data  = $data;
+    } else {
+
+        $table->data  = null;
+    }
+
     echo html_writer::table($table);
 }
 
@@ -216,10 +224,12 @@ function asked_enrolments_table($askedenrolments, $answer) {
 
     foreach ($askedenrolments as $askedenrolment) {
 
-        if ($DB->record_exists('course', array('id' => $askedenrolment->courseid))) {
+        $courseid = $DB->get_record('enrol', array('id' => $askedenrolment->enrolid))->courseid;
 
-            $course = $DB->get_record('course', array('id' => $askedenrolment->courseid));
-            $coursecategory = $DB->get_record('coursecategories', array('id' => $course->category));
+        if ($DB->record_exists('course', array('id' => $courseid))) {
+
+            $course = $DB->get_record('course', array('id' => $courseid));
+            $coursecategory = $DB->get_record('course_categories', array('id' => $course->category));
 
             $line = array();
             $line[] = $coursecategory->name;

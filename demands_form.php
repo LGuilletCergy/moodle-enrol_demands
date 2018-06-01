@@ -31,6 +31,8 @@
  * Form file
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 require_once("$CFG->libdir/formslib.php");
 
 class enrol_demands_demands_form extends moodleform {

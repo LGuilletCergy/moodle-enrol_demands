@@ -31,9 +31,9 @@
  * Type the custommessage enrol and redirect
  */
 
-//include simplehtml_form.php
-require_once('enrol/demands/validate_form.php');
-require_once('enrol/demands/lib.php');
+require('../../config.php');
+require_once($CFG->dirroot.'/enrol/demands/validate_form.php');
+require_once($CFG->dirroot.'/enrol/demands/lib.php');
 
 $paramreject = optional_param('reject', 0, PARAM_INT);
 $paramenrol = optional_param('enrol', 0, PARAM_INT);
@@ -41,6 +41,7 @@ $paramall = optional_param('all', 0, PARAM_INT);
 
 $PAGE->set_url('/enrol/demands/validate.php');
 $PAGE->set_pagelayout('report');
+$PAGE->set_context(context_system::instance());
 
 require_login();
 
@@ -48,18 +49,19 @@ $title = get_string('pluginname', 'enrol_demands');
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
 
-
-echo $OUTPUT->header();
+print_object("Test");
 
 //Instantiate simplehtml_form
-$mform = new simplehtml_form();
+$mform = new enrol_demands_validate_form();
 
-$redirecturl = new moodle_url('enrol/demands/requests.php');
+$redirecturl = new moodle_url('requests.php');
 
 if ($mform->is_cancelled()) {
 
     redirect($redirecturl);
 } else if ($fromform = $mform->get_data()) {
+
+
 
     if ($fromform->reject != 0) {
 
@@ -79,7 +81,7 @@ if ($mform->is_cancelled()) {
 
                 case 1: // Accepter tous.
 
-                    acceptenroldemand($askedenrolment->id);
+                    acceptenroldemand($askedenrolment->id, $fromform->custommessage);
                     break;
 
                 case 2: //Accepter tous si bonne VET
@@ -87,14 +89,14 @@ if ($mform->is_cancelled()) {
                     $correctvet = has_correct_vet($askedenrolment);
 
                     if ($correctvet) {
-                        acceptenroldemand($askedenrolment->id);
+                        acceptenroldemand($askedenrolment->id, $fromform->custommessage);
                     }
 
                     break;
 
                 case 3: // Refuser tous.
 
-                    rejectenroldemand($askedenrolment->id);
+                    rejectenroldemand($askedenrolment->id, $fromform->custommessage);
                     break;
 
                 case 4: // Refuser tous si mauvaise VET.
@@ -102,7 +104,7 @@ if ($mform->is_cancelled()) {
                     $correctvet = has_correct_vet($askedenrolment);
 
                     if (!$correctvet) {
-                        rejectenroldemand($askedenrolment->id);
+                        rejectenroldemand($askedenrolment->id, $fromform->custommessage);
                     }
 
                     break;
@@ -115,6 +117,8 @@ if ($mform->is_cancelled()) {
 
     redirect($redirecturl);
 } else {
+
+    echo $OUTPUT->header();
 
     $defaultdata = new stdClass();
     $defaultdata->reject = $paramreject;
@@ -178,7 +182,8 @@ function acceptenroldemand($paramenrol, $custommessage) {
 
             $student = $DB->get_record('user', array('id' => $demanddata->studentid));
 
-            enrol_demands_plugin::enrol_user($enrol, $student->id, $enrol->roleid);
+            $enrolplugin = new enrol_demands_plugin();
+            $enrolplugin->enrol_user($enrol, $student->id, $enrol->roleid);
 
             // On note que la demande est acceptée.
             $now = time();
@@ -215,7 +220,7 @@ function has_correct_vet($askedenrolment) {
         $enrol = $DB->get_record('enrol', array('id' => $askedenrolment->enrolid));
         $course = $DB->get_record('course', array('id' => $enrol->courseid));
         $categoryvet = $DB->get_record('course_categories',
-                array('id' => $course->categoryid))->idnumber;
+                array('id' => $course->category))->idnumber;
 
         $studentvets = $DB->get_records('local_usercreation_vet',
                 array('studentid' => $askedenrolment->studentid));

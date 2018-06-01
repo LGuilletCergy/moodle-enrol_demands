@@ -70,7 +70,7 @@ class enrol_demands_plugin extends enrol_plugin {
         }
 
         if ($DB->record_exists('enrol_demands',
-                array('enrolid' => $instance->id, 'studentid' => $USER->id))) {
+                array('enrolid' => $instance->id, 'studentid' => $USER->id, 'answer' => null))) {
 
             $hasapplied = true;
         }

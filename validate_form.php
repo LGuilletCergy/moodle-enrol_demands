@@ -31,6 +31,8 @@
  * Form file
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 require_once("$CFG->libdir/formslib.php");
 
 class enrol_demands_validate_form extends moodleform {
@@ -44,10 +46,17 @@ class enrol_demands_validate_form extends moodleform {
         $mform = $this->_form;
         $paramdata = $this->_customdata;
 
-        $mform->addElement('text', 'custommessage', get_string('custommessage', 'enrol_demands'));
-        $mform->addElement('hidden', 'reject', $paramdata->reject);
-        $mform->addElement('hidden', 'enrol', $paramdata->enrol);
-        $mform->addElement('hidden', 'all', $paramdata->all);
+        $mform->addElement('editor', 'custommessage', get_string('custommessage', 'enrol_demands'));
+        $mform->setType('reject', PARAM_TEXT);
+        $mform->addElement('hidden', 'reject');
+        $mform->setType('reject', PARAM_INT);
+        $mform->setDefault('reject', 0);
+        $mform->addElement('hidden', 'enrol');
+        $mform->setType('enrol', PARAM_INT);
+        $mform->setDefault('enrol', 0);
+        $mform->addElement('hidden', 'all');
+        $mform->setType('all', PARAM_INT);
+        $mform->setDefault('all', 0);
 
         $this->add_action_buttons();
 
