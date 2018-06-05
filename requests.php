@@ -116,6 +116,8 @@ function maketabledemands() {
         echo get_string('buttonstopreminders', 'enrol_demands');
     }
 
+    echo "<br><br>";
+
     $preferencenameloggedindemands = "message_provider_enrol_demands_demands_loggedin";
 
     if ($DB->record_exists('user_preferences',
