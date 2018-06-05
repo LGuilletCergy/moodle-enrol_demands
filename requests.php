@@ -122,7 +122,7 @@ function maketabledemands() {
             array('userid' => $USER->id,
                 'name' => $preferencenameloggedindemands, 'value' => 'none'))) {
 
-        echo get_string('buttonsenddemandssagain', 'enrol_demands');
+        echo get_string('buttonsenddemandsagain', 'enrol_demands');
     } else {
 
         echo get_string('buttonstopdemands', 'enrol_demands');
