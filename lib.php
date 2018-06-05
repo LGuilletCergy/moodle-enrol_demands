@@ -236,10 +236,13 @@ function enrol_demands_extend_navigation_course($navigation, $course, $context) 
     $requestsurl = new moodle_url('/enrol/demands/requests.php');
     $requeststext = get_string('pluginname', 'enrol_demands');
 
-    $settingsnode = navigation_node::create($requeststext, $requestsurl,
-            navigation_node::TYPE_SETTING, null, null, new pix_icon('i/settings', ''));
+    if (has_capability('enrol/demands:managecourseenrolment', $context)) {
 
-    $navigation->add_node($settingsnode);
+        $settingsnode = navigation_node::create($requeststext, $requestsurl,
+                navigation_node::TYPE_SETTING, null, null, new pix_icon('i/settings', ''));
+
+        $navigation->add_node($settingsnode);
+    }
 }
 
 function send_answer_notification($user, $instance, $type, $custommessage) {
@@ -283,7 +286,7 @@ function send_answer_notification($user, $instance, $type, $custommessage) {
         }
     }
 
-    $courseurl = new moodle_url('course/view.php', array('id' => $course->id));
+    $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
 
     $message = new enrol_demands_notification($user, $contact, $type, $subject,
             $content, $courseurl, $course);
@@ -309,7 +312,7 @@ function send_demand_notification($instance, $user) {
 
     $content = get_string('newdemandmail', 'enrol_demands', $course->fullname);
 
-    $courseurl = new moodle_url('course/view.php', array('id' => $course->id));
+    $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
 
     $message = new enrol_demands_notification($user, $contact, 'demands', $subject,
             $content, $courseurl, $course);

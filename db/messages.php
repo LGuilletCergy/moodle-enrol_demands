@@ -35,7 +35,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $messageproviders = array (
 
-    // Notify teacher of his pending enrolment demands.
+    // Notify teacher of a new enrolment demand.
     'demands' => array (),
 
     // Notify student that he was enroled.
@@ -43,4 +43,7 @@ $messageproviders = array (
 
     // Notify student that his demand was rejected.
     'rejected' => array (),
+
+    // Notify teacher of his pending enrolment demands.
+    'reminder' => array (),
 );

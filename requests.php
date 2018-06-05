@@ -19,6 +19,7 @@ $inscriptionnode = $PAGE->navigation->add('Demandes d\'inscription',
 $inscriptionnode->make_active();
 
 $paramnomail = optional_param('nomail', 0, PARAM_INT);
+$paramtablenomail = optional_param('tablenomail', "", PARAM_TEXT);
 $paramreject = optional_param('reject', 0, PARAM_INT);
 $paramenrol = optional_param('enrol', 0, PARAM_INT);
 $paramall = optional_param('all', 0, PARAM_INT);
@@ -30,7 +31,7 @@ $paramall = optional_param('all', 0, PARAM_INT);
 // NOTIFICATIONS OU PAS
 if ($paramnomail == 1 || $paramnomail == 2) {
 
-    change_notification_status($paramnomail);
+    change_notification_status($paramnomail, $paramtablenomail);
 }
 
 echo $OUTPUT->header();
@@ -41,7 +42,7 @@ maketableyourdemands();
 
 echo $OUTPUT->footer();
 
-function change_notification_status($paramnomail) {
+function change_notification_status($paramnomail, $preferencename) {
 
     global $USER, $DB;
 
@@ -53,7 +54,7 @@ function change_notification_status($paramnomail) {
         $newvalue = 'popup,email';
     }
 
-    $preferencenameloggedin = "message_provider_enrol_demands_demands_loggedin";
+    $preferencenameloggedin = "message_provider_enrol_demands_"."$preferencename"."_loggedin";
 
     if ($DB->record_exists('user_preferences',
             array('userid' => $USER->id, 'name' => $preferencenameloggedin))) {
@@ -74,7 +75,7 @@ function change_notification_status($paramnomail) {
         $DB->insert_record('user_preferences', $userpreferenceloggedin);
     }
 
-    $preferencenameloggedoff = "message_provider_enrol_demands_demands_loggedoff";
+    $preferencenameloggedoff = "message_provider_enrol_demands_"."$preferencename"."_loggedoff";
 
     if ($DB->record_exists('user_preferences',
             array('userid' => $USER->id, 'name' => $preferencenameloggedoff))) {
@@ -103,15 +104,28 @@ function maketabledemands() {
     global $DB, $CFG, $USER;
 
     echo get_string('headermanageenrolments', 'enrol_demands');
-    $preferencenameloggedin = "message_provider_enrol_demands_demands_loggedin";
+    $preferencenameloggedinreminder = "message_provider_enrol_demands_reminder_loggedin";
 
     if ($DB->record_exists('user_preferences',
-            array('userid' => $USER->id, 'name' => $preferencenameloggedin, 'value' => 'none'))) {
+            array('userid' => $USER->id,
+                'name' => $preferencenameloggedinreminder, 'value' => 'none'))) {
 
         echo get_string('buttonsendremindersagain', 'enrol_demands');
     } else {
 
         echo get_string('buttonstopreminders', 'enrol_demands');
+    }
+
+    $preferencenameloggedindemands = "message_provider_enrol_demands_demands_loggedin";
+
+    if ($DB->record_exists('user_preferences',
+            array('userid' => $USER->id,
+                'name' => $preferencenameloggedindemands, 'value' => 'none'))) {
+
+        echo get_string('buttonsenddemandssagain', 'enrol_demands');
+    } else {
+
+        echo get_string('buttonstopdemands', 'enrol_demands');
     }
 
     $table = new html_table();

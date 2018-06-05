@@ -49,8 +49,6 @@ $title = get_string('pluginname', 'enrol_demands');
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
 
-print_object("Test");
-
 //Instantiate simplehtml_form
 $mform = new enrol_demands_validate_form();
 
@@ -65,10 +63,10 @@ if ($mform->is_cancelled()) {
 
     if ($fromform->reject != 0) {
 
-        rejectenroldemand($fromform->reject, $fromform->custommessage);
+        rejectenroldemand($fromform->reject, $fromform->custommessage['text']);
     } else if ($fromform->enrol != 0) {
 
-        acceptenroldemand($fromform->enrol, $fromform->custommessage);
+        acceptenroldemand($fromform->enrol, $fromform->custommessage['text']);
     } else if($fromform->all != 0){
 
         // Le tri sur le droit d'acceptation ou de refus se fait dans la fonction.
@@ -81,7 +79,7 @@ if ($mform->is_cancelled()) {
 
                 case 1: // Accepter tous.
 
-                    acceptenroldemand($askedenrolment->id, $fromform->custommessage);
+                    acceptenroldemand($askedenrolment->id, $fromform->custommessage['text']);
                     break;
 
                 case 2: //Accepter tous si bonne VET
@@ -89,14 +87,14 @@ if ($mform->is_cancelled()) {
                     $correctvet = has_correct_vet($askedenrolment);
 
                     if ($correctvet) {
-                        acceptenroldemand($askedenrolment->id, $fromform->custommessage);
+                        acceptenroldemand($askedenrolment->id, $fromform->custommessage['text']);
                     }
 
                     break;
 
                 case 3: // Refuser tous.
 
-                    rejectenroldemand($askedenrolment->id, $fromform->custommessage);
+                    rejectenroldemand($askedenrolment->id, $fromform->custommessage['text']);
                     break;
 
                 case 4: // Refuser tous si mauvaise VET.
@@ -104,7 +102,7 @@ if ($mform->is_cancelled()) {
                     $correctvet = has_correct_vet($askedenrolment);
 
                     if (!$correctvet) {
-                        rejectenroldemand($askedenrolment->id, $fromform->custommessage);
+                        rejectenroldemand($askedenrolment->id, $fromform->custommessage['text']);
                     }
 
                     break;

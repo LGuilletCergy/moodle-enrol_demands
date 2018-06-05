@@ -42,22 +42,22 @@ class enrol_demands_notification extends \core\message\message {
 
             case 'demands':
                 $this->name = 'demands';
-                $this->smallmessage = get_string('demandsmail', 'enrol_demands', $data);
+                $this->smallmessage = get_string('subjectnewdemand', 'enrol_demands', $data);
                 break;
 
             case 'enroled':
                 $this->name = 'enroled';
-                $this->smallmessage = get_string('succesfulenrolmentmail', 'enrol_demands', $data);
+                $this->smallmessage = get_string('subjectaccepted', 'enrol_demands', $data);
                 break;
 
             case 'rejected':
                 $this->name = 'rejected';
-                $this->smallmessage = get_string('rejectedenrolmentmail', 'enrol_demands', $data);
+                $this->smallmessage = get_string('subjectrejected', 'enrol_demands', $data);
                 break;
 
             case 'reminder':
                 $this->name = 'reminder';
-                $this->smallmessage = get_string('demandsmail', 'enrol_demands', $data);
+                $this->smallmessage = get_string('subjectreminder', 'enrol_demands', $data);
                 break;
 
             default:
