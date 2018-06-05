@@ -93,11 +93,11 @@ $string['buttonstopreminders'] = "<a href='requests.php?nomail=1&tablenomail=rem
 $string['buttonsendremindersagain'] = "<a href='requests.php?nomail=2&tablenomail=reminder'>"
         . "<button class='btn btn-secondary'>Merci de me signaler ces demandes"
         . " par courriel chaque lundi matin.</button></a>";
-$string['buttonstopreminders'] = "<a href='requests.php?nomail=1&tablenomail=demands'>"
+$string['buttonstopdemands'] = "<a href='requests.php?nomail=1&tablenomail=demands'>"
         . "<button class='btn btn-secondary'>Ne plus m'envoyer de courriel pour les nouvelles"
         . " demandes."
         . "</button></a>";
-$string['buttonsendremindersagain'] = "<a href='requests.php?nomail=2&tablenomail=demands'>"
+$string['buttonsenddemandsagain'] = "<a href='requests.php?nomail=2&tablenomail=demands'>"
         . "<button class='btn btn-secondary'>Merci de me signaler les nouvelles demandes"
         . " d'inscriptions.</button></a>";
 $string['coursevet'] = "VET du cours";
