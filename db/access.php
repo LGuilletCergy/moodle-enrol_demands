@@ -65,4 +65,15 @@ $capabilities = array(
         )
     ),
 
+    'enrol/demands:manage' => array(
+
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'teacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW,
+        )
+    ),
+
 );
