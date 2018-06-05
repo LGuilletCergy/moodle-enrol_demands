@@ -66,7 +66,7 @@ if ($mform->is_cancelled()) {
     } else if ($fromform->enrol != 0) {
 
         acceptenroldemand($fromform->enrol, $fromform->custommessage['text']);
-    } else if($fromform->all != 0) {
+    } else if ($fromform->all != 0) {
 
         // Le tri sur le droit d'acceptation ou de refus se fait dans la fonction.
 
