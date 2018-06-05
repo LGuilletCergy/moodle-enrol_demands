@@ -39,7 +39,7 @@ class enrol_demands_demands_form extends moodleform {
 
     protected $instance;
 
-    //Add elements to form
+    // Add elements to form.
     public function definition() {
         global $CFG;
 
@@ -60,8 +60,8 @@ class enrol_demands_demands_form extends moodleform {
         $mform->setType('instance', PARAM_INT);
         $mform->setDefault('instance', $instance->id);
     }
-    //Custom validation should be added here
-    function validation($data, $files) {
+    // Custom validation should be added here.
+    public function validation($data, $files) {
 
         return array();
     }

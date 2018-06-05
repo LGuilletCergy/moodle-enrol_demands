@@ -65,7 +65,6 @@ class enrol_demands_plugin extends enrol_plugin {
         if ($DB->record_exists('user_enrolments',
                 array('userid' => $USER->id, 'enrolid' => $instance->id))) {
 
-
             $hasroleincourse = true;
         }
 
@@ -306,9 +305,7 @@ function send_demand_notification($instance, $user) {
 
     $contact = core_user::get_support_user();
 
-
     $subject = get_string('subjectnewdemand', 'enrol_demands', $course->fullname);
-
 
     $content = get_string('newdemandmail', 'enrol_demands', $course->fullname);
 

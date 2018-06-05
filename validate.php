@@ -49,7 +49,6 @@ $title = get_string('pluginname', 'enrol_demands');
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
 
-//Instantiate simplehtml_form
 $mform = new enrol_demands_validate_form();
 
 $redirecturl = new moodle_url('requests.php');
@@ -67,7 +66,7 @@ if ($mform->is_cancelled()) {
     } else if ($fromform->enrol != 0) {
 
         acceptenroldemand($fromform->enrol, $fromform->custommessage['text']);
-    } else if($fromform->all != 0){
+    } else if($fromform->all != 0) {
 
         // Le tri sur le droit d'acceptation ou de refus se fait dans la fonction.
 
@@ -82,7 +81,7 @@ if ($mform->is_cancelled()) {
                     acceptenroldemand($askedenrolment->id, $fromform->custommessage['text']);
                     break;
 
-                case 2: //Accepter tous si bonne VET
+                case 2: // Accepter tous si bonne VET.
 
                     $correctvet = has_correct_vet($askedenrolment);
 

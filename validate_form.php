@@ -39,12 +39,11 @@ class enrol_demands_validate_form extends moodleform {
 
     protected $instance;
 
-    //Add elements to form
+    // Add elements to form.
     public function definition() {
         global $CFG;
 
         $mform = $this->_form;
-        $paramdata = $this->_customdata;
 
         $mform->addElement('editor', 'custommessage', get_string('custommessage', 'enrol_demands'));
         $mform->setType('reject', PARAM_TEXT);
@@ -61,8 +60,9 @@ class enrol_demands_validate_form extends moodleform {
         $this->add_action_buttons();
 
     }
-    //Custom validation should be added here
-    function validation($data, $files) {
+
+    // Custom validation should be added here.
+    public function validation($data, $files) {
 
         return array();
     }
