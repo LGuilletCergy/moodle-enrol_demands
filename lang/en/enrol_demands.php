@@ -63,15 +63,19 @@ $string['headermanageenrolments'] = "<br><br>
     <a href='validate.php?all=3'><button class='btn btn-secondary'>Reject everyone</button></a>&nbsp;&nbsp;
     <a href='validate.php?all=4'><button class='btn btn-secondary'>Reject only if bad vet</button></a><br><br>
     <br>";
-$string['buttonstopreminders'] = "<a href='requests.php?nomail=1&tablenomail=reminder'>"
+$string['buttonstopreminders'] = "Reminder mails : "
+        . "<a href='requests.php?nomail=1&tablenomail=reminder'>"
         . "<button class='btn btn-secondary'>Do not send reminder mails for these demands."
         . "</button></a>";
-$string['buttonsendremindersagain'] = "<a href='requests.php?nomail=2&tablenomail=reminder'>"
+$string['buttonsendremindersagain'] = "Reminder mails : "
+        . "<a href='requests.php?nomail=2&tablenomail=reminder'>"
         . "<button class='btn btn-secondary'>Send these demands by mail every monday morning."
         . "</button></a>";
-$string['buttonstopdemands'] = "<a href='requests.php?nomail=1&tablenomail=demands'>"
+$string['buttonstopdemands'] = "New demand mail : "
+        . "<a href='requests.php?nomail=1&tablenomail=demands'>"
         . "<button class='btn btn-secondary'>Do not send mails for new demands.</button></a>";
-$string['buttonsenddemandsagain'] = "<a href='requests.php?nomail=2&tablenomail=demands'>"
+$string['buttonsenddemandsagain'] = "New demand mail : "
+        . "<a href='requests.php?nomail=2&tablenomail=demands'>"
         . "<button class='btn btn-secondary'>Send these demands by mail when i receive them."
         . "</button></a>";
 $string['coursevet'] = "VET of the course";

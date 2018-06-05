@@ -86,18 +86,22 @@ $string['headermanageenrolments'] = "<br><br>
     <a href='validate.php?all=3'><button class='btn btn-secondary'>Refuser tous</button></a>&nbsp;&nbsp;
     <a href='validate.php?all=4'><button class='btn btn-secondary'>Refuser tous si mauvaise VET</button></a><br><br>
     <br>";
-$string['buttonstopreminders'] = "<a href='requests.php?nomail=1&tablenomail=reminder'>"
+$string['buttonstopreminders'] = "Courriels de rappels : "
+        . "<a href='requests.php?nomail=1&tablenomail=reminder'>"
         . "<button class='btn btn-secondary'>Ne plus m'envoyer de courriel de rappel"
         . " pour ces demandes."
         . "</button></a>";
-$string['buttonsendremindersagain'] = "<a href='requests.php?nomail=2&tablenomail=reminder'>"
+$string['buttonsendremindersagain'] = "Courriels de rappels : "
+        . "<a href='requests.php?nomail=2&tablenomail=reminder'>"
         . "<button class='btn btn-secondary'>Merci de me signaler ces demandes"
         . " par courriel chaque lundi matin.</button></a>";
-$string['buttonstopdemands'] = "<a href='requests.php?nomail=1&tablenomail=demands'>"
+$string['buttonstopdemands'] = "Courriel à chaque nouvelle demande : "
+        . "<a href='requests.php?nomail=1&tablenomail=demands'>"
         . "<button class='btn btn-secondary'>Ne plus m'envoyer de courriel pour les nouvelles"
         . " demandes."
         . "</button></a>";
-$string['buttonsenddemandsagain'] = "<a href='requests.php?nomail=2&tablenomail=demands'>"
+$string['buttonsenddemandsagain'] = "Courriel à chaque nouvelle demande : "
+        . "<a href='requests.php?nomail=2&tablenomail=demands'>"
         . "<button class='btn btn-secondary'>Merci de me signaler les nouvelles demandes"
         . " d'inscriptions.</button></a>";
 $string['coursevet'] = "VET du cours";
