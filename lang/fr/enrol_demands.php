@@ -50,24 +50,24 @@ $string['demandsmail'] = "Vous avez ".'{$a}'." demandes d'inscriptions en attent
     comme celui-ci.</p>
     <p>Bien cordialement,<br>
     CoursUCP, votre plateforme pédagogique.</p>";
-$string['succesfulenrolmentmail'] = "Bonjour, \n"
-        . "\nVotre demande d'inscription au cours ".'{$a->coursename}'." vient d'être acceptée"
-        . " par ".'{$a->userfirstname} {$a->userlastname} {$a->useremail}'.".\n"
-        . "Vous pouvez y accéder depuis $CFG->wwwroot --> onglet Mes cours.\n"
-        . "\nBon travail !\n"
+$string['succesfulenrolmentmail'] = "Bonjour, <br>"
+        . "<br>Votre demande d'inscription au cours ".'{$a->coursename}'." vient d'être acceptée"
+        . " par ".'{$a->userfirstname} {$a->userlastname} {$a->useremail}'.".<br>"
+        . "Vous pouvez y accéder depuis $CFG->wwwroot --> onglet Mes cours.<br>"
+        . "<br>Bon travail !<br>"
         . "CoursUCP, votre plateforme pédagogique<br>"
         . "Ceci est un message automatique. Merci de ne pas y répondre. "
         . "Pour toute demande ou information, nous vous invitons à "
         . "<a href='https://monucp.u-cergy.fr/uPortal/f/u312l1s6/p/"
         . "Assistance.u312l1n252/max/render.uP?pCp'>Effectuer une demande</a>"
         . " dans la catégorie <strong>SEFIAP -> Applications pédagogiques</strong>.";
-$string['rejectedenrolmentmail'] = "Bonjour, \n"
-        . "\nVotre demande d'inscription au cours ".'{$a->coursename} vient d\'être refusée '
-        . 'par {$a->userfirstname} {$a->userlastname} {$a->useremail}'.".\n"
-        . "Nous vous conseillons : \n"
-        . "1 . De bien vérifier l'intitulé de ce cours : fait-il partie de votre cursus? \n"
+$string['rejectedenrolmentmail'] = "Bonjour, <br>"
+        . "<br>Votre demande d'inscription au cours ".'{$a->coursename} vient d\'être refusée '
+        . 'par {$a->userfirstname} {$a->userlastname} {$a->useremail}'.".<br>"
+        . "Nous vous conseillons : <br>"
+        . "1 . De bien vérifier l'intitulé de ce cours : fait-il partie de votre cursus? <br>"
         . "2 . Si tout cela vous semble correct, contacter l'enseignant qui gère le cours."
-        . "\n\nBien cordialement, \n"
+        . "<br><br>Bien cordialement, <br>"
         . "CoursUCP, votre plateforme pédagogique<br>"
         . "Ceci est un message automatique. Merci de ne pas y répondre. "
         . "Pour toute demande ou information, nous vous invitons à "
