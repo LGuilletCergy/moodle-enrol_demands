@@ -245,13 +245,27 @@ function maketableyourdemands() {
 
 function checkdemands($answer, $orderby, $label) {
     global $DB, $USER;
-    $sql = "SELECT id, enrolid, askedat, answer, answeredat, answererid "
+
+    if ($answer != '') {
+
+        $sql = "SELECT id, enrolid, askedat, answer, answeredat, answererid "
             . "FROM mdl_enrol_demands "
             . "WHERE studentid = $USER->id "
-            . "AND answer = '$answer' "
+            . "AND answer LIKE '$answer' "
             . "ORDER BY $orderby DESC";
+    } else {
+
+        $sql = "SELECT id, enrolid, askedat, answer, answeredat, answererid "
+            . "FROM mdl_enrol_demands "
+            . "WHERE studentid = $USER->id "
+            . "AND answer IS NULL "
+            . "ORDER BY $orderby DESC";
+    }
+
     $demands = $DB->get_records_sql($sql);
+
     if ($demands) {
+
         echo "<h3>$label</h3>";
         asked_enrolments_table($demands, $answer);
     }
