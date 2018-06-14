@@ -295,8 +295,16 @@ function asked_enrolments_table($askedenrolments, $answer) {
             $line = array();
             $line[] = $coursecategory->name;
             $line[] = $course->fullname;
-            $line[] = date("D, d M Y H:i:s" ,$askedenrolment->askedat);
-            $line[] = date("D, d M Y H:i:s" ,$askedenrolment->answeredat);
+            $line[] = date("d/m/Y H:i:s" ,$askedenrolment->askedat);
+
+            if (isset($askedenrolment->answeredat)) {
+
+                $line[] = date("d/m/Y H:i:s" ,$askedenrolment->answeredat);
+            } else {
+
+                $line[] = "";
+            }
+
 
             if ($DB->record_exists('user', array('id' => $askedenrolment->answererid))) {
 
