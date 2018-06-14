@@ -295,8 +295,8 @@ function asked_enrolments_table($askedenrolments, $answer) {
             $line = array();
             $line[] = $coursecategory->name;
             $line[] = $course->fullname;
-            $line[] = $askedenrolment->askedat;
-            $line[] = $askedenrolment->answeredat;
+            $line[] = date($askedenrolment->askedat);
+            $line[] = date($askedenrolment->answeredat);
 
             if ($DB->record_exists('user', array('id' => $askedenrolment->answererid))) {
 
