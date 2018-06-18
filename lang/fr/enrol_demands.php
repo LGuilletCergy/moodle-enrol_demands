@@ -137,5 +137,5 @@ $string['messageprovider:demands'] = "Nouvelle demande d'inscription reçue";
 $string['messageprovider:enroled'] = "Demande d'inscription acceptée";
 $string['messageprovider:rejected'] = "Demande d'inscription rejetée";
 $string['messageprovider:reminder'] = "Demande d'inscription reçues";
-$string['defaulanswerenroled'] = 'Message d\'acceptation par défaut';
-$string['defaulanswerrejected'] = 'Message de refus par défaut';
+$string['defaultanswerenroled'] = 'Message d\'acceptation par défaut';
+$string['defaultanswerrejected'] = 'Message de refus par défaut';

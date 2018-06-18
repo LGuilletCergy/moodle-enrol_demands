@@ -111,5 +111,5 @@ $string['messageprovider:demands'] = "New enrolment demand received";
 $string['messageprovider:enroled'] = "Enrolment demand accepted";
 $string['messageprovider:rejected'] = "Enrolment demand rejected";
 $string['messageprovider:reminder'] = "Reminder of enrolment demands received";
-$string['defaulanswerenroled'] = 'Default enrolment message';
-$string['defaulanswerrejected'] = 'Default rejection message';
+$string['defaultanswerenroled'] = 'Default enrolment message';
+$string['defaultanswerrejected'] = 'Default rejection message';

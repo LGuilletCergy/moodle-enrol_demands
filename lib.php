@@ -184,14 +184,14 @@ class enrol_demands_plugin extends enrol_plugin {
 
         $coursename = $DB->get_record('course', array('id' => $instance->courseid))->fullname;
 
-        $mform->addElement('editor', 'defaultanswerenroled',
+        $mform->addElement('editor', 'customtext1',
                 get_string('defaultanswerenroled', 'enrol_demands'));
-        $mform->setDefault('defaultanswerenroled',
+        $mform->setDefault('customtext1',
                 get_string('succesfulenrolmentmail', 'enrol_demands', $coursename));
 
-        $mform->addElement('editor', 'defaulanswerrejected',
-                get_string('defaulanswerrejected', 'enrol_demands'));
-        $mform->setDefault('defaulanswerrejected',
+        $mform->addElement('editor', 'customtext2',
+                get_string('defaultanswerrejected', 'enrol_demands'));
+        $mform->setDefault('customtext2',
                 get_string('rejectedenrolmentmail', 'enrol_demands', $coursename));
     }
 
