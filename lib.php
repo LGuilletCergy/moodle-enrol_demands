@@ -184,12 +184,12 @@ class enrol_demands_plugin extends enrol_plugin {
 
         $coursename = $DB->get_record('course', array('id' => $instance->courseid))->fullname;
 
-        $mform->addElement('editor', 'customtext1',
+        $mform->addElement('htmleditor', 'customtext1',
                 get_string('defaultanswerenroled', 'enrol_demands'));
         $mform->setDefault('customtext1',
                 get_string('succesfulenrolmentmail', 'enrol_demands', $coursename));
 
-        $mform->addElement('editor', 'customtext2',
+        $mform->addElement('htmleditor', 'customtext2',
                 get_string('defaultanswerrejected', 'enrol_demands'));
         $mform->setDefault('customtext2',
                 get_string('rejectedenrolmentmail', 'enrol_demands', $coursename));
@@ -207,9 +207,6 @@ class enrol_demands_plugin extends enrol_plugin {
      * @return void
      */
     public function edit_instance_validation($data, $files, $instance, $context) {
-
-        $data->customtext1 = $data['customtext1']->text;
-        $data->customtext2 = $data['customtext2']->text;
 
         return true;
     }
