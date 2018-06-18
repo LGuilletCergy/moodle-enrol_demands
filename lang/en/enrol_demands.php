@@ -113,3 +113,5 @@ $string['messageprovider:rejected'] = "Enrolment demand rejected";
 $string['messageprovider:reminder'] = "Reminder of enrolment demands received";
 $string['defaultanswerenroled'] = 'Default enrolment message';
 $string['defaultanswerrejected'] = 'Default rejection message';
+$string['replacedefaultmessage'] = '<br><br>If you want to send a customised message instead'
+        . ' of your default message, type it below : <br><br>';

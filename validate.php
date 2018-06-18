@@ -58,8 +58,6 @@ if ($mform->is_cancelled()) {
     redirect($redirecturl);
 } else if ($fromform = $mform->get_data()) {
 
-
-
     if ($fromform->reject != 0) {
 
         rejectenroldemand($fromform->reject, $fromform->custommessage['text']);
@@ -116,6 +114,8 @@ if ($mform->is_cancelled()) {
 } else {
 
     echo $OUTPUT->header();
+
+    echo get_string('replacedefaultmessage', 'enrol_demands');
 
     $defaultdata = new stdClass();
     $defaultdata->reject = $paramreject;

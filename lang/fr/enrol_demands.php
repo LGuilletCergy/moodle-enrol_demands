@@ -139,3 +139,5 @@ $string['messageprovider:rejected'] = "Demande d'inscription rejetée";
 $string['messageprovider:reminder'] = "Demande d'inscription reçues";
 $string['defaultanswerenroled'] = 'Message d\'acceptation par défaut';
 $string['defaultanswerrejected'] = 'Message de refus par défaut';
+$string['replacedefaultmessage'] = '<br><br>Si vous souhaitez envoyer un message personnalisé'
+        . 'au lieu de votre message par défaut, tapez-le ci dessous : <br><br>';

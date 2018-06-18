@@ -295,7 +295,7 @@ function send_answer_notification($user, $instance, $type, $custommessage) {
             $content = $custommessage;
         } else {
 
-            $content = get_string('succesfulenrolmentmail', 'enrol_demands', $stringdata);
+            $content = $instance->customtext2;
         }
     } else if ($type == 'rejected') {
 
@@ -305,7 +305,7 @@ function send_answer_notification($user, $instance, $type, $custommessage) {
             $content = $custommessage;
         } else {
 
-            $content = get_string('rejectedenrolmentmail', 'enrol_demands', $stringdata);
+            $content = $instance->customtext1;
         }
     }
 
