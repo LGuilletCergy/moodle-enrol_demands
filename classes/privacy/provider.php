@@ -31,8 +31,6 @@
  * RGPD file
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 namespace mod_forum\privacy;
 use core_privacy\local\metadata\collection;
 

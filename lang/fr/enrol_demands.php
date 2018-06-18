@@ -51,8 +51,7 @@ $string['demandsmail'] = "Vous avez ".'{$a}'." demandes d'inscriptions en attent
     <p>Bien cordialement,<br>
     CoursUCP, votre plateforme pédagogique.</p>";
 $string['succesfulenrolmentmail'] = "Bonjour, <br>"
-        . "<br>Votre demande d'inscription au cours ".'{$a->coursename}'." vient d'être acceptée"
-        . " par ".'{$a->userfirstname} {$a->userlastname} {$a->useremail}'.".<br>"
+        . "<br>Votre demande d'inscription au cours {$a} vient d'être acceptée.<br>"
         . "Vous pouvez y accéder depuis $CFG->wwwroot --> onglet Mes cours.<br>"
         . "<br>Bon travail !<br>"
         . "CoursUCP, votre plateforme pédagogique<br>"
@@ -62,8 +61,7 @@ $string['succesfulenrolmentmail'] = "Bonjour, <br>"
         . "Assistance.u312l1n252/max/render.uP?pCp'>Effectuer une demande</a>"
         . " dans la catégorie <strong>SEFIAP -> Applications pédagogiques</strong>.";
 $string['rejectedenrolmentmail'] = "Bonjour, <br>"
-        . "<br>Votre demande d'inscription au cours ".'{$a->coursename} vient d\'être refusée '
-        . 'par {$a->userfirstname} {$a->userlastname} {$a->useremail}'.".<br>"
+        . "<br>Votre demande d'inscription au cours {$a} vient être refusée.<br>"
         . "Nous vous conseillons : <br>"
         . "1 . De bien vérifier l'intitulé de ce cours : fait-il partie de votre cursus? <br>"
         . "2 . Si tout cela vous semble correct, contacter l'enseignant qui gère le cours."
@@ -139,3 +137,5 @@ $string['messageprovider:demands'] = "Nouvelle demande d'inscription reçue";
 $string['messageprovider:enroled'] = "Demande d'inscription acceptée";
 $string['messageprovider:rejected'] = "Demande d'inscription rejetée";
 $string['messageprovider:reminder'] = "Demande d'inscription reçues";
+$string['defaulanswerenroled'] = 'Message d\'acceptation par défaut';
+$string['defaulanswerrejected'] = 'Message de refus par défaut';
