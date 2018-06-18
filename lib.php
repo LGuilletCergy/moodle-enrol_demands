@@ -208,8 +208,8 @@ class enrol_demands_plugin extends enrol_plugin {
      */
     public function edit_instance_validation($data, $files, $instance, $context) {
 
-        $data->customtext1 = $data->customtext1->text;
-        $data->customtext2 = $data->customtext2->text;
+        $data->customtext1 = $data['customtext1']->text;
+        $data->customtext2 = $data['customtext2']->text;
 
         return true;
     }
@@ -253,7 +253,7 @@ class enrol_demands_plugin extends enrol_plugin {
      */
     public function can_hide_show_instance($instance) {
             $context = context_course::instance($instance->courseid);
-            return has_capability('enrol/apply:config', $context);
+            return has_capability('enrol/demands:config', $context);
     }
 }
 
