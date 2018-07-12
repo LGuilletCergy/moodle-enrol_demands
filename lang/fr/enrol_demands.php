@@ -142,3 +142,15 @@ $string['defaultanswerrejected'] = 'Message de refus par défaut';
 $string['replacedefaultmessage'] = '<br><br>Si vous souhaitez envoyer un message personnalisé'
         . ' au lieu de votre message par défaut, tapez-le ci dessous,'
         . ' sinon, cliquez sur \'Enregistrer\' sans rien modifier : <br><br>';
+$string['privacy:metadata:enrol_demands'] = 'Information sur quel étudiant a demandé'
+        . ' à être inscrit dans quel cours.';
+$string['privacy:metadata:enrol_demands:studentid'] = 'L\'ID de l\'étudiant'
+        . ' qui a demandé à être inscrit.';
+$string['privacy:metadata:message_provider_enrol_demands_demands_'] = 'Préferences pour les '
+        . 'notifications des messages de demandes d\'inscription.';
+$string['privacy:metadata:message_provider_enrol_demands_enroled_'] = 'Préferences pour les '
+        . 'notifications d\'acceptation de demandes d\'inscription.';
+$string['privacy:metadata:message_provider_enrol_demands_rejected_'] = 'Préferences pour les '
+        . 'notifications de refus de demandes d\'inscription.';
+$string['privacy:metadata:message_provider_enrol_demands_reminder_'] = 'Préferences pour les '
+        . 'notifications des rappels de demandes d\'inscription.';

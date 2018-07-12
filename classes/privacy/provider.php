@@ -31,7 +31,9 @@
  * RGPD file
  */
 
-namespace mod_forum\privacy;
+defined('MOODLE_INTERNAL') || die();
+
+namespace enrol_demands\privacy;
 use core_privacy\local\metadata\collection;
 
 class provider implements
@@ -42,6 +44,106 @@ class provider implements
 
         // Here you will add more items into the collection.
 
+        $collection->add_database_table(
+            'enrol_demands',
+            [
+                'studentid' => 'privacy:metadata:enrol_demands:studentid',
+
+            ],
+            'privacy:metadata:enrol_demands'
+        );
+
+        $collection->add_user_preference('"message_provider_enrol_demands_demands_',
+        'privacy:metadata:preference:message_provider_enrol_demands_demands_');
+        $collection->add_user_preference('"message_provider_enrol_demands_enroled_',
+        'privacy:metadata:preference:message_provider_enrol_demands_enroled_');
+        $collection->add_user_preference('"message_provider_enrol_demands_rejected_',
+        'privacy:metadata:preference:message_provider_enrol_demands_rejected_');
+        $collection->add_user_preference('"message_provider_enrol_demands_reminder_',
+        'privacy:metadata:preference:message_provider_enrol_demands_reminder_');
+
         return $collection;
+    }
+
+    public static function get_contexts_for_userid(int $userid) : contextlist {
+
+        $contextlist = new \core_privacy\local\request\contextlist();
+
+        $sql = "SELECT c.id FROM {context} WHERE (contextlevel = :contextlevel AND instanceid IN
+            (SELECT courseid FROM {enrol} WHERE id IN
+                (SELECT enrolid FROM {enrol_demand} WHERE studentid = :studentid)
+            )
+        )";
+
+        $params = [
+            'contextlevel' => CONTEXT_COURSE,
+            'userid' => $userid,
+        ];
+
+        $contextlist->add_from_sql($sql, $params);
+    }
+
+    public static function export_user_data(approved_contextlist $contextlist) {
+
+        global $DB;
+
+        if (empty($contextlist->count())) {
+            return;
+        }
+
+        $userid = $contextlist->get_user()->id;
+
+        foreach ($contextlist->get_contexts() as $context) {
+
+            $sql = "SELECT * FROM {enrol_demands} WHERE studentid = $userid  AND enrolid IN "
+                    . "(SELECT id FROM {enrol} WHERE enrol LIKE 'cohort' AND courseid IN "
+                    . "(SELECT instanceid FROM {context} WHERE id = $context->id))";
+
+            $results = $DB->get_records_sql($sql);
+
+            foreach ($results as $result) {
+                $data = (object) [
+                    'studentid' => $result->studentid,
+                ];
+
+                \core_privacy\local\request\writer::with_context(
+                        $context)->export_data([
+                            get_string('pluginname', 'enrol_demands')], $data);
+            }
+        }
+    }
+
+    public static function delete_data_for_user(approved_contextlist $contextlist) {
+
+        global $DB;
+
+        if (empty($contextlist->count())) {
+            return;
+        }
+
+        $userid = $contextlist->get_user()->id;
+
+        foreach ($contextlist->get_contexts() as $context) {
+
+            $sql = "SELECT * FROM {enrol_demands} WHERE studentid = $userid  AND enrolid IN "
+                    . "(SELECT id FROM {enrol} WHERE enrol LIKE 'cohort' AND courseid IN "
+                    . "(SELECT instanceid FROM {context} WHERE id = $context->id))";
+
+            $DB->delete_records_sql($sql);
+        }
+    }
+
+    public static function delete_data_for_all_users_in_context(\context $context) {
+        global $DB;
+
+        if ($context->contextlevel != CONTEXT_COURSE) {
+            return;
+        }
+
+        $sql = "SELECT * FROM {enrol_demands} WHERE enrolid IN "
+                    . "(SELECT id FROM {enrol} WHERE enrol LIKE 'cohort' AND courseid IN "
+                    . "(SELECT instanceid FROM {context} WHERE id = $context->id))";
+
+        $DB->delete_records_sql($sql);
     }
 }

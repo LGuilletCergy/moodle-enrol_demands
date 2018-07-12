@@ -115,3 +115,15 @@ $string['defaultanswerenroled'] = 'Default enrolment message';
 $string['defaultanswerrejected'] = 'Default rejection message';
 $string['replacedefaultmessage'] = '<br><br>If you want to send a customised message instead'
         . ' of your default message, type it below : <br><br>';
+$string['privacy:metadata:enrol_demands'] = 'Information about which student'
+        . ' asked to be enroled in which course.';
+$string['privacy:metadata:enrol_demands:studentid'] = 'The ID of the student who asked'
+        . ' to be enroled.';
+$string['privacy:metadata:message_provider_enrol_demands_demands_'] = 'Preferences for notification'
+        . ' of demands messages.';
+$string['privacy:metadata:message_provider_enrol_demands_enroled_'] = 'Preferences for notification'
+        . ' of enrolment accepted messages.';
+$string['privacy:metadata:message_provider_enrol_demands_rejected_'] = 'Preferences for notification'
+        . ' of enrolment rejected messages.';
+$string['privacy:metadata:message_provider_enrol_demands_reminder_'] = 'Preferences for notification'
+        . ' of reminder messages.';
