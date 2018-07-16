@@ -144,8 +144,14 @@ $string['replacedefaultmessage'] = '<br><br>Si vous souhaitez envoyer un message
         . ' sinon, cliquez sur \'Enregistrer\' sans rien modifier : <br><br>';
 $string['privacy:metadata:enrol_demands'] = 'Information sur quel étudiant a demandé'
         . ' à être inscrit dans quel cours.';
+$string['privacy:metadata:enrol_demands:enrolid'] = 'L\'ID de la méthode d\'inscription.';
 $string['privacy:metadata:enrol_demands:studentid'] = 'L\'ID de l\'étudiant'
         . ' qui a demandé à être inscrit.';
+$string['privacy:metadata:enrol_demands:askedat'] = 'Moment de la demande.';
+$string['privacy:metadata:enrol_demands:answeredat'] = 'Moment de la réponse.';
+$string['privacy:metadata:enrol_demands:answer'] = 'Réponse.';
+$string['privacy:metadata:enrol_demands:answererid'] = 'ID de la personne ayant répondu.';
+$string['privacy:metadata:enrol_demands:mailedat'] = 'Moment de la notification.';
 $string['privacy:metadata:message_provider_enrol_demands_demands_'] = 'Préferences pour les '
         . 'notifications des messages de demandes d\'inscription.';
 $string['privacy:metadata:message_provider_enrol_demands_enroled_'] = 'Préferences pour les '

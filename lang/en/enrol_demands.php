@@ -117,8 +117,14 @@ $string['replacedefaultmessage'] = '<br><br>If you want to send a customised mes
         . ' of your default message, type it below : <br><br>';
 $string['privacy:metadata:enrol_demands'] = 'Information about which student'
         . ' asked to be enroled in which course.';
+$string['privacy:metadata:enrol_demands:enrolid'] = 'The ID of the enrolment method.';
 $string['privacy:metadata:enrol_demands:studentid'] = 'The ID of the student who asked'
         . ' to be enroled.';
+$string['privacy:metadata:enrol_demands:askedat'] = 'Time of the demand.';
+$string['privacy:metadata:enrol_demands:answeredat'] = 'Time of the answer.';
+$string['privacy:metadata:enrol_demands:answer'] = 'The answer of the demand.';
+$string['privacy:metadata:enrol_demands:answererid'] = 'Who answered the demand.';
+$string['privacy:metadata:enrol_demands:mailedat'] = 'Time of the notification.';
 $string['privacy:metadata:message_provider_enrol_demands_demands_'] = 'Preferences for notification'
         . ' of demands messages.';
 $string['privacy:metadata:message_provider_enrol_demands_enroled_'] = 'Preferences for notification'
