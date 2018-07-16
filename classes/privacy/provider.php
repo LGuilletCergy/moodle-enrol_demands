@@ -117,7 +117,11 @@ class provider implements
 
             foreach ($results as $result) {
                 $data = (object) [
+                    'enrolid' => $result->enrolid,
                     'studentid' => $result->studentid,
+                    'askedat' => $result->askedat,
+                    'mailedat' => $result->mailedat,
+                    'answer' => $result->answer,
                 ];
 
                 \core_privacy\local\request\writer::with_context(
@@ -133,7 +137,10 @@ class provider implements
 
             foreach ($resultsanswer as $result) {
                 $data = (object) [
-                    'studentid' => $result->studentid,
+                    'enrolid' => $result->enrolid,
+                    'answeredat' => $result->answeredat,
+                    'answerer' => $result->answerer,
+                    'answererid' => $result->answererid,
                 ];
 
                 \core_privacy\local\request\writer::with_context(
