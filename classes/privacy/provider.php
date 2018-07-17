@@ -81,7 +81,7 @@ class provider implements
 
         $contextlist = new \core_privacy\local\request\contextlist();
 
-        $sql = "SELECT c.id FROM {context} WHERE (contextlevel = :contextlevel AND instanceid IN
+        $sql = "SELECT id FROM {context} WHERE (contextlevel = :contextlevel AND instanceid IN
             (SELECT courseid FROM {enrol} WHERE id IN
                 (SELECT enrolid FROM {enrol_demands} WHERE studentid = :userid)
             )
@@ -94,7 +94,7 @@ class provider implements
 
         $contextlist->add_from_sql($sql, $params);
 
-        $sqlanswer = "SELECT c.id FROM {context} WHERE (contextlevel = :contextlevel AND instanceid IN
+        $sqlanswer = "SELECT id FROM {context} WHERE (contextlevel = :contextlevel AND instanceid IN
             (SELECT courseid FROM {enrol} WHERE id IN
                 (SELECT enrolid FROM {enrol_demands} WHERE answererid = :userid)
             )
