@@ -83,7 +83,7 @@ class provider implements
 
         $sql = "SELECT c.id FROM {context} WHERE (contextlevel = :contextlevel AND instanceid IN
             (SELECT courseid FROM {enrol} WHERE id IN
-                (SELECT enrolid FROM {enrol_demand} WHERE studentid = :userid)
+                (SELECT enrolid FROM {enrol_demands} WHERE studentid = :userid)
             )
         )";
 
@@ -96,7 +96,7 @@ class provider implements
 
         $sqlanswer = "SELECT c.id FROM {context} WHERE (contextlevel = :contextlevel AND instanceid IN
             (SELECT courseid FROM {enrol} WHERE id IN
-                (SELECT enrolid FROM {enrol_demand} WHERE answererid = :userid)
+                (SELECT enrolid FROM {enrol_demands} WHERE answererid = :userid)
             )
         )";
 
