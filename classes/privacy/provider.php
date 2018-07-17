@@ -35,7 +35,11 @@ namespace enrol_demands\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
-use core_privacy\local\metadata\collection;
+use \core_privacy\local\request\approved_contextlist;
+use \core_privacy\local\request\contextlist;
+use \core_privacy\local\request\writer;
+use \core_privacy\local\request\deletion_criteria;
+use \core_privacy\local\metadata\collection;
 
 class provider implements
         // This plugin does store personal user data.
@@ -128,8 +132,7 @@ class provider implements
                     'answer' => $result->answer,
                 ];
 
-                \core_privacy\local\request\writer::with_context(
-                        $context)->export_data([
+                writer::with_context($context)->export_data([
                             get_string('pluginname', 'enrol_demands')], $data);
             }
 
