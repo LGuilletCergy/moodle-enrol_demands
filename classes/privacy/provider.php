@@ -31,9 +31,10 @@
  * RGPD file
  */
 
+namespace enrol_demands\privacy;
+
 defined('MOODLE_INTERNAL') || die();
 
-namespace enrol_demands\privacy;
 use core_privacy\local\metadata\collection;
 
 class provider implements
