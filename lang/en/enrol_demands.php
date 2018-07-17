@@ -125,11 +125,11 @@ $string['privacy:metadata:enrol_demands:answeredat'] = 'Time of the answer.';
 $string['privacy:metadata:enrol_demands:answer'] = 'The answer of the demand.';
 $string['privacy:metadata:enrol_demands:answererid'] = 'Who answered the demand.';
 $string['privacy:metadata:enrol_demands:mailedat'] = 'Time of the notification.';
-$string['privacy:metadata:message_provider_enrol_demands_demands_'] = 'Preferences for notification'
-        . ' of demands messages.';
-$string['privacy:metadata:message_provider_enrol_demands_enroled_'] = 'Preferences for notification'
-        . ' of enrolment accepted messages.';
-$string['privacy:metadata:message_provider_enrol_demands_rejected_'] = 'Preferences for notification'
-        . ' of enrolment rejected messages.';
-$string['privacy:metadata:message_provider_enrol_demands_reminder_'] = 'Preferences for notification'
-        . ' of reminder messages.';
+$string['privacy:metadata:preference:message_provider_enrol_demands_demands_'] = 'Preferences for '
+        . 'notification of demands messages.';
+$string['privacy:metadata:preference:message_provider_enrol_demands_enroled_'] = 'Preferences for '
+        . 'notification of enrolment accepted messages.';
+$string['privacy:metadata:preference:message_provider_enrol_demands_rejected_'] = 'Preferences for '
+        . 'notification of enrolment rejected messages.';
+$string['privacy:metadata:preference:message_provider_enrol_demands_reminder_'] = 'Preferences for '
+        . 'notification of reminder messages.';

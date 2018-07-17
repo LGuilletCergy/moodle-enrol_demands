@@ -152,11 +152,11 @@ $string['privacy:metadata:enrol_demands:answeredat'] = 'Moment de la réponse.';
 $string['privacy:metadata:enrol_demands:answer'] = 'Réponse.';
 $string['privacy:metadata:enrol_demands:answererid'] = 'ID de la personne ayant répondu.';
 $string['privacy:metadata:enrol_demands:mailedat'] = 'Moment de la notification.';
-$string['privacy:metadata:message_provider_enrol_demands_demands_'] = 'Préferences pour les '
-        . 'notifications des messages de demandes d\'inscription.';
-$string['privacy:metadata:message_provider_enrol_demands_enroled_'] = 'Préferences pour les '
-        . 'notifications d\'acceptation de demandes d\'inscription.';
-$string['privacy:metadata:message_provider_enrol_demands_rejected_'] = 'Préferences pour les '
-        . 'notifications de refus de demandes d\'inscription.';
-$string['privacy:metadata:message_provider_enrol_demands_reminder_'] = 'Préferences pour les '
-        . 'notifications des rappels de demandes d\'inscription.';
+$string['privacy:metadata:preference:message_provider_enrol_demands_demands_'] = 'Préferences pour les'
+        . ' notifications des messages de demandes d\'inscription.';
+$string['privacy:metadata:preference:message_provider_enrol_demands_enroled_'] = 'Préferences pour les'
+        . ' notifications d\'acceptation de demandes d\'inscription.';
+$string['privacy:metadata:preference:message_provider_enrol_demands_rejected_'] = 'Préferences pour'
+        . ' les notifications de refus de demandes d\'inscription.';
+$string['privacy:metadata:preference:message_provider_enrol_demands_reminder_'] = 'Préferences pour'
+        . ' les notifications des rappels de demandes d\'inscription.';

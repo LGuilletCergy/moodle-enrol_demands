@@ -196,4 +196,56 @@ class provider implements
 
         $DB->delete_records_sql($sql);
     }
+
+    /**
+     * Export all user preferences for the plugin.
+     *
+     * @param   int         $userid The userid of the user whose data is to be exported.
+     */
+    public static function export_user_preferences(int $userid) {
+
+        $demandspreference = get_user_preferences('message_provider_enrol_demands_demands_',
+                null, $userid);
+        if ($demandspreference !== null) {
+            writer::export_user_preference('enrol_demands',
+                'message_provider_enrol_demands_demands_',
+                $demandspreference,
+                get_string('privacy:metadata:preference:message_provider_enrol_demands_demands_',
+                        'enrol_demands')
+            );
+        }
+
+        $demandsenroled = get_user_preferences('message_provider_enrol_demands_enroled_',
+                null, $userid);
+        if ($demandsenroled !== null) {
+            writer::export_user_preference('enrol_demands',
+                'message_provider_enrol_demands_enroled_',
+                $demandsenroled,
+                get_string('privacy:metadata:preference:message_provider_enrol_demands_enroled_',
+                        'enrol_demands')
+            );
+        }
+
+        $demandsrejected = get_user_preferences('message_provider_enrol_demands_rejected_',
+                null, $userid);
+        if ($demandsrejected !== null) {
+            writer::export_user_preference('enrol_demands',
+                'message_provider_enrol_demands_rejected_',
+                $demandsrejected,
+                get_string('privacy:metadata:preference:message_provider_enrol_demands_rejected_',
+                        'enrol_demands')
+            );
+        }
+
+        $demandsreminder = get_user_preferences('message_provider_enrol_demands_reminder_',
+                null, $userid);
+        if ($demandsreminder !== null) {
+            writer::export_user_preference('enrol_demands',
+                'message_provider_enrol_demands_reminder_',
+                $demandsreminder,
+                get_string('privacy:metadata:preference:message_provider_enrol_demands_reminder_',
+                        'enrol_demands')
+            );
+        }
+    }
 }
