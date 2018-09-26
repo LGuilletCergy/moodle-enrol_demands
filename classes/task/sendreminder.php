@@ -68,12 +68,12 @@ class sendreminder extends \core\task\scheduled_task {
 
                     if (is_enrolled($coursecontext, $courseteacher)) {
 
-                        if (isset($teachers[$courseteacher->userid])) {
+                        if (isset($teachers[$courseteacher->id])) {
 
-                            $teachers[$courseteacher->userid]++;
+                            $teachers[$courseteacher->id]++;
                         } else {
 
-                            $teachers[$courseteacher->userid] = 1;
+                            $teachers[$courseteacher->id] = 1;
                         }
                     }
                 }
@@ -84,28 +84,26 @@ class sendreminder extends \core\task\scheduled_task {
 
         foreach ($teachers as $teacherid => $nbrequests) {
 
-            $teacher = core_user::get_user($teacherid);
+            $teacher = \core_user::get_user($teacherid);
 
             send_reminder_message($teacher, $nbrequests);
         }
-
     }
+}
 
-    public function send_reminder_message($teacher, $nbrequests) {
+function send_reminder_message($teacher, $nbrequests) {
 
-        global $CFG;
+    global $CFG;
 
-        require_once($CFG->dirroot.'/enrol/demands/notification.php');
+    require_once($CFG->dirroot.'/enrol/demands/notification.php');
 
-        $contact = core_user::get_support_user();
+    $contact = \core_user::get_support_user();
 
-        $subject = get_string('subjectreminder', 'enrol_demands');
-        $content = get_string('demandsmail', 'enrol_demands', $nbrequests);
+    $subject = get_string('subjectreminder', 'enrol_demands');
+    $content = get_string('demandsmail', 'enrol_demands', $nbrequests);
 
-        $message = new enrol_demands_notification($teacher, $contact, 'reminder', $subject,
-                $content, null, $nbrequests);
+    $message = new \enrol_demands_notification($teacher, $contact, 'reminder', $subject,
+            $content, null, $nbrequests);
 
-        message_send($message);
-    }
-
+    message_send($message);
 }
