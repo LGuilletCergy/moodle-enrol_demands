@@ -59,8 +59,7 @@ class sendreminder extends \core\task\scheduled_task {
             if ($DB->record_exists('context',
                     array('contextlevel' => CONTEXT_COURSE, 'instanceid' => $courseid))) {
 
-                $coursecontext = $DB->get_record('context',
-                    array('contextlevel' => CONTEXT_COURSE, 'instanceid' => $courseid));
+                $coursecontext = \context_course::instance($courseid);
 
                 $courseteachers = get_users_by_capability($coursecontext,
                         'enrol/demands:managecourseenrolment');
