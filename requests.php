@@ -193,7 +193,7 @@ function maketabledemands() {
 
                 foreach ($listvets as $vet) {
 
-                    if (substr($stringvets, 0, 5) == $CFG->yearprefix) {
+                    if (substr($vet->vetcode, 0, 5) == $CFG->yearprefix) {
 
                         if ($stringvets != "") {
 
