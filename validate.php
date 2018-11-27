@@ -224,7 +224,7 @@ function has_correct_vet($askedenrolment) {
 
         foreach ($studentvets as $studentvet) {
 
-            if ($studentvet->vetcode == $categoryvet) {
+            if (strstr($categoryvet, $studentvet->vetcode) != FALSE) {
 
                 $correctvet = true;
                 break;
