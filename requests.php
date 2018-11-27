@@ -200,7 +200,7 @@ function maketabledemands() {
                             $stringvets .= ", ";
                         }
 
-                        $stringvets .= $vet->vetcode;
+                        $stringvets .= $vet->vetname;
                     }
                 }
 
