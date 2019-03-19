@@ -177,48 +177,51 @@ function maketabledemands() {
 
         if ($demand->answererid == 0) {
 
-            $enrol = $DB->get_record('enrol', array('id' => $demand->enrolid));
+            if ($DB->record_exists('enrol', array('id' => $demand->enrolid))) {
 
-            $coursecontext = context_course::instance($enrol->courseid);
+                $enrol = $DB->get_record('enrol', array('id' => $demand->enrolid));
 
-            if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)
-                    && is_enrolled($coursecontext)) {
+                $coursecontext = context_course::instance($enrol->courseid);
 
-                $course = $DB->get_record('course', array('id' => $enrol->courseid));
-                $student = $DB->get_record('user', array('id' => $demand->studentid));
+                if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)
+                        && is_enrolled($coursecontext)) {
 
-                $stringvets = "";
+                    $course = $DB->get_record('course', array('id' => $enrol->courseid));
+                    $student = $DB->get_record('user', array('id' => $demand->studentid));
 
-                $listvets = $DB->get_records('local_usercreation_vet', array('studentid' => $student->id));
+                    $stringvets = "";
 
-                foreach ($listvets as $vet) {
+                    $listvets = $DB->get_records('local_usercreation_vet', array('studentid' => $student->id));
 
-                    if (substr($vet->vetcode, 0, 5) == $CFG->yearprefix) {
+                    foreach ($listvets as $vet) {
 
-                        if ($stringvets != "") {
+                        if (substr($vet->vetcode, 0, 5) == $CFG->yearprefix) {
 
-                            $stringvets .= ", ";
+                            if ($stringvets != "") {
+
+                                $stringvets .= ", ";
+                            }
+
+                            $stringvets .= $vet->vetname;
                         }
-
-                        $stringvets .= $vet->vetname;
                     }
+
+                    $linebutton = "<td><a href='validate.php?enrol=$demand->id'>".
+                            get_string('accept', 'enrol_demands')."</a></td>"
+                            . "<td><a href='validate.php?reject=$demand->id'>".
+                            get_string('reject', 'enrol_demands')."</a></td>";
+
+                    $line = array();
+                    $line[] = $course->idnumber;
+                    $line[] = $course->fullname;
+                    $line[] = date("d/m/Y", $demand->askedat);
+                    $line[] = "<a href='$CFG->wwwroot/user/view.php?id=$student->id'>"
+                            . "$student->firstname $student->lastname</a>";
+                    $line[] = $student->email;
+                    $line[] = $stringvets;
+                    $line[] = $linebutton;
+                    $data[] = $row = new html_table_row($line);
                 }
-
-                $linebutton = "<td><a href='validate.php?enrol=$demand->id'>".
-                        get_string('accept', 'enrol_demands')."</a></td>"
-                        . "<td><a href='validate.php?reject=$demand->id'>".
-                        get_string('reject', 'enrol_demands')."</a></td>";
-
-                $line = array();
-                $line[] = $course->idnumber;
-                $line[] = $course->fullname;
-                $line[] = date("d/m/Y", $demand->askedat);
-                $line[] = "<a href='$CFG->wwwroot/user/view.php?id=$student->id'>"
-                        . "$student->firstname $student->lastname</a>";
-                $line[] = $student->email;
-                $line[] = $stringvets;
-                $line[] = $linebutton;
-                $data[] = $row = new html_table_row($line);
             }
         }
     }
