@@ -172,30 +172,33 @@ function acceptenroldemand($paramenrol, $custommessage) {
 
         $enrol = $DB->get_record('enrol', array('id' => $demanddata->enrolid));
 
-        $coursecontext = context_course::instance($enrol->courseid);
+        if ($DB->record_exists('course', array('id' => $enrol->courseid))) {
 
-        if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)
-                && is_enrolled($coursecontext)) {
+            $coursecontext = context_course::instance($enrol->courseid);
 
-            $student = $DB->get_record('user', array('id' => $demanddata->studentid));
+            if (has_capability('enrol/demands:managecourseenrolment', $coursecontext)
+                    && is_enrolled($coursecontext)) {
 
-            $enrolplugin = new enrol_demands_plugin();
-            $enrolplugin->enrol_user($enrol, $student->id, $enrol->roleid);
+                $student = $DB->get_record('user', array('id' => $demanddata->studentid));
 
-            // On note que la demande est acceptée.
-            $now = time();
-            $sql = "UPDATE mdl_enrol_demands SET answeredat = $now, answer = 'Oui',"
-                    . " answererid = $USER->id WHERE id = $paramenrol";
-            $DB->execute($sql);
+                $enrolplugin = new enrol_demands_plugin();
+                $enrolplugin->enrol_user($enrol, $student->id, $enrol->roleid);
 
-            // Send mail.
+                // On note que la demande est acceptée.
+                $now = time();
+                $sql = "UPDATE mdl_enrol_demands SET answeredat = $now, answer = 'Oui',"
+                        . " answererid = $USER->id WHERE id = $paramenrol";
+                $DB->execute($sql);
 
-            send_answer_notification($student, $enrol, 'enroled', $custommessage);
+                // Send mail.
 
-            return 0;
-        } else {
+                send_answer_notification($student, $enrol, 'enroled', $custommessage);
 
-            return -1;
+                return 0;
+            } else {
+
+                return -1;
+            }
         }
     }
 }
