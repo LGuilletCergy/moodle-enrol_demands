@@ -61,7 +61,7 @@ $string['succesfulenrolmentmail'] = "Bonjour, <br>"
         . "Assistance.u312l1n252/max/render.uP?pCp'>Effectuer une demande</a>"
         . " dans la catégorie <strong>SEFIAP -> Applications pédagogiques</strong>.";
 $string['rejectedenrolmentmail'] = "Bonjour, <br>"
-        . "<br>Votre demande d'inscription au cours ".'{$a}'." vient d\'être refusée.<br>"
+        . "<br>Votre demande d'inscription au cours ".'{$a}'." vient d'être refusée.<br>"
         . "Nous vous conseillons : <br>"
         . "1 . De bien vérifier l'intitulé de ce cours : fait-il partie de votre cursus? <br>"
         . "2 . Si tout cela vous semble correct, contacter l'enseignant qui gère le cours."
