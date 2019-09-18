@@ -295,7 +295,7 @@ function send_answer_notification($user, $instance, $type, $custommessage) {
             $content = $custommessage;
         } else {
 
-            $content = $instance->customtext2;
+            $content = $instance->customtext1;
         }
     } else if ($type == 'rejected') {
 
@@ -305,7 +305,7 @@ function send_answer_notification($user, $instance, $type, $custommessage) {
             $content = $custommessage;
         } else {
 
-            $content = $instance->customtext1;
+            $content = $instance->customtext2;
         }
     }
 
